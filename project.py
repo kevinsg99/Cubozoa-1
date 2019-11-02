@@ -1,6 +1,5 @@
 import geocoder
 import googlemaps
-import geocoder
 from datetime import datetime
 from flask import Flask
 
@@ -13,6 +12,9 @@ geocode_result = gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
 
 # Look up an address with reverse geocoding
 reverse_geocode_result = gmaps.reverse_geocode((40.714224, -73.961452))
+points = [{"lat" : -33.867486, "lng" : 151.206990}, "Sydney"]
+#coord = [12, 12]
+#print(googlemaps.roads.nearest_roads(gmaps.client_id, coord))
 
 # Request directions via public transit
 now = datetime.now()
@@ -25,4 +27,7 @@ directions_result = gmaps.directions("Sydney Town Hall",
 def getCurrentLocation():
     g = geocoder.ip('me')
     coordinates = g.latlng
+    #print(googlemaps.roads.nearest_roads(gmaps.client_id, points))
     return coordinates
+
+getCurrentLocation()
