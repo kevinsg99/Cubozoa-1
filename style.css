@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(78, 77, 77);
+}
+
+h1 {
+    font-size: 250%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+
+p {
+    font-size: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+
+button {
+    font-size: 1em;
+    color: white;
+    z-index: 4;
+    border-radius: 12px;
+    background-color: transparent;
+    border: 100;
+    border-color: white;
+    font-family: Helvetica Neue 75 Bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+button:hover {
+  background-color: white;
+  border: 100;
+  border-color: white;
+  color: rgb(78, 77, 77);
+}
