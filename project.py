@@ -25,13 +25,8 @@ directions_result = gmaps.directions("Sydney Town Hall",
                                      mode="transit",
                                      departure_time=now)
 
-<<<<<<< HEAD
-g = geocoder.ip('me')
-print(g.latlng)
-=======
 #gets current location, returning array of coordinates
 def getCurrentLocation():
     g = geocoder.ip('me')
     coordinates = g.latlng
     return coordinates
->>>>>>> 46cfcb7304b769f5bedb72f4d04de39e22f075f0
