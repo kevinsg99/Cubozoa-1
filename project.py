@@ -25,3 +25,5 @@ def getCurrentLocation():
     g = geocoder.ip('me')
     coordinates = g.latlng
     return coordinates
+
+def router():
