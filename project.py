@@ -1,4 +1,3 @@
-import geocoder
 import googlemaps
 from datetime import datetime
 from flask import Flask
