@@ -1,4 +1,4 @@
-import googlemaps from dependencies/google-maps-services-python
+import dependencies.googlemaps
 from datetime import datetime
 from flask import Flask
 
