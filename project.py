@@ -6,11 +6,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-<<<<<<< HEAD
-gmaps = googlemaps.Client(key="AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
-=======
 gmaps = googlemaps.Client(key='AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8')
->>>>>>> 46cfcb7304b769f5bedb72f4d04de39e22f075f0
 
 # Geocoding an address
 geocode_result = gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
