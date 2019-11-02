@@ -1,3 +1,4 @@
+import geocoder
 import googlemaps
 import geocoder
 from datetime import datetime
@@ -5,7 +6,11 @@ from flask import Flask
 
 app = Flask(__name__)
 
+<<<<<<< HEAD
 gmaps = googlemaps.Client(key="AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
+=======
+gmaps = googlemaps.Client(key='AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8')
+>>>>>>> 46cfcb7304b769f5bedb72f4d04de39e22f075f0
 
 # Geocoding an address
 geocode_result = gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
@@ -20,5 +25,13 @@ directions_result = gmaps.directions("Sydney Town Hall",
                                      mode="transit",
                                      departure_time=now)
 
+<<<<<<< HEAD
 g = geocoder.ip('me')
 print(g.latlng)
+=======
+#gets current location, returning array of coordinates
+def getCurrentLocation():
+    g = geocoder.ip('me')
+    coordinates = g.latlng
+    return coordinates
+>>>>>>> 46cfcb7304b769f5bedb72f4d04de39e22f075f0
