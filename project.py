@@ -1,5 +1,4 @@
 import googlemaps
-import geocoder
 from datetime import datetime
 from flask import Flask
 
@@ -17,5 +16,3 @@ reverse_geocode_result = gmaps.reverse_geocode((40.714224, -73.961452))
 class profile:
     distance = input('distance:')
     location = geocoder.ip('me')
-    street = reverse_geocode()
-
