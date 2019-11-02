@@ -1,8 +1,13 @@
 import googlemaps
+import geocoder
 from datetime import datetime
 from flask import Flask
 
 app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template('output.html')
 
 gmaps = googlemaps.Client(key='AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8')
 
@@ -25,4 +30,8 @@ def getCurrentLocation():
     coordinates = g.latlng
     return coordinates
 
-def router():
+#def router():
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
