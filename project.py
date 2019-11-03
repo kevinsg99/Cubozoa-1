@@ -4,7 +4,6 @@ from datetime import datetime
 from flask import Flask, render_template
 from queue import LifoQueue
 from googlemaps import convert
-#from googlemaps import GoogleMaps
 
 app = Flask(__name__)
 
@@ -46,16 +45,22 @@ def getCurrentLocation():
     return coordinates
 
 coordinates = getCurrentLocation()
-print(coordinates)
+#print(coordinates)
 #home = [{"lat" : coordinates[0], "lng" : coordinates[1]}, "Columbus"]
 home = (coordinates[0], coordinates[1])
+home = (40.006066, -83.009263)
 route = LifoQueue()
 allRoutes = LifoQueue()
 totalDist = 0
 streetDist = 0
 runDistance = 0
 adjStreet = gmaps.nearest_roads(home)
-print(adjStreet)
+#print(adjStreet)
+addressInfo = gmaps.reverse_geocode(home)
+streetCoords = adjStreet[0]['location']
+streetAddress = gmaps.reverse_geocode((streetCoords['latitude'], streetCoords['longitude']))
+street = streetAddress[1]['address_components'][1]['long_name']
+print(street)
 
 def router(adjacent):
     for n in adjacent:
@@ -69,5 +74,5 @@ def router(adjacent):
             route.get()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
     router(adjStreet)
