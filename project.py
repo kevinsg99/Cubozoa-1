@@ -1,9 +1,9 @@
 import googlemaps
 import geocoder
+import requests
 from datetime import datetime
 from flask import Flask, render_template
 from queue import LifoQueue
-from googlemaps import convert
 from googlemaps import directions
 import socket
 import requests
@@ -169,6 +169,11 @@ if __name__ == "__main__":
     totalDist = 0
     streetDist = 1
     runDistance = 4
+<<<<<<< HEAD
     adjStreet = sweep(home,0.0005)
     router(adjStreet)
     print(adjStreet)
+=======
+    adjStreet = sweep(home,0.00005)
+    router(adjStreet)
+>>>>>>> b56190f4d23a86ee3b3d30c903e86e0ae23222bc
