@@ -139,3 +139,8 @@ ul li.checked::before {
   height: 15px;
   width: 7px;
 }
+
+#map-canvas {
+    height: 550px;
+    weight: 100%
+  }
