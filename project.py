@@ -6,6 +6,7 @@ from queue import LifoQueue
 from googlemaps import convert
 from googlemaps import directions
 import socket
+import requests
 
 app = Flask(__name__)
 gmaps = googlemaps.Client(key="AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
@@ -15,7 +16,7 @@ socket.setdefaulttimeout(9)
 def home():
     #data = open('templates/index.html').read()    
     #return data
-    return render_template('index.html')
+    return render_template('templates/index.html')
 
 home = [0.00, 0.00]
 coordinates = [0.00,0.00]
@@ -70,15 +71,15 @@ def sweep(home, spacing):
     intersections = []
 
     for i in range(len(grid)):
-        '''
+    
         requested_info = requests.get("http://www.mapquestapi.com/geocoding/v1/reverse?key="
         + mq_KEY + "&location=" 
         + str(grid[i][0])
         + ","
         + str(grid[i][1])
         + "&includeRoadMetadata=true&includeNearestIntersection=true")
-        '''
-        requested_info = geocoder.mapquest([grid[i][0], grid[i][1]],method='reverse',key=mq_KEY)
+        
+        #requested_info = geocoder.mapquest([grid[i][0], grid[i][1]],method='reverse',key=mq_KEY)
         intersection_coordinates = [requested_info.json()['results'][0]['locations'][0]['nearestIntersection']['latLng']['latitude'],requested_info.json()['results'][0]['locations'][0]['nearestIntersection']['latLng']['longitude']]
         intersections.append(intersection_coordinates)
     print(intersections)
@@ -113,11 +114,11 @@ street = streetAddress[1]['address_components'][1]['long_name']
 #print(street)
 #direct = gmaps.directions(home, neighbor1)
 
-def getMiles(direct):
+def getMiles(coord1, coord2):
+    direct = gmaps.directions(coord1, coord2)
     directLegs = direct[0]['legs']
     directDistance = directLegs[0]['distance']
     directText = directDistance['text']
-    print(directText)
     miles = ""
     done = False
     for s in directText:
@@ -125,11 +126,14 @@ def getMiles(direct):
             done = True
         elif (done == False) and (s != " "):
             miles += s
-    return miles
+    return float(miles)
 
 def router(adjacent):
     totalDist = 0
-    while len(adjacent) > 0:
+    streetDist = getMiles(current,adjacent[0]['location'])
+    current = adjacent[0]['location']
+    route = LifoQueue()
+    while len(adjacent)-1 > 0:
         n = adjacent[0]
         print(n)
         if (home not in n) and (totalDist+streetDist < runDistance):
@@ -143,7 +147,7 @@ def router(adjacent):
                 i = i+1'''
             adjacent.pop(0)
             totalDist += streetDist
-            router(adjacent)
+            router(current, adjacent, runDistance)
         elif (home in n) and (totalDist+streetDist == runDistance):
             route.put(n)
             allRoutes.put(route)
