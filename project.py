@@ -1,13 +1,14 @@
 import googlemaps
 import geocoder
 from datetime import datetime
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template('output.html')
+    data = open('index.html').read()    
+    return data
 
 gmaps = googlemaps.Client(key='AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8')
 
