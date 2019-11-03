@@ -1,9 +1,11 @@
 body {
-    background-color: rgb(78, 77, 77);
-}
+    background-image: url('background1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;}
 
 h1 { 
-    color: #ffffff; 
+    color: rgb(78, 77, 77); 
     font-family: 'Lato', sans-serif; 
     font-size: 250%; 
     font-weight: 300; 
@@ -11,9 +13,17 @@ h1 {
     margin: 0 0 58px; 
 }
 
+h2 { 
+    color: rgb(78, 77, 77); 
+    font-family: 'Lato', sans-serif; 
+    font-size: 190%; 
+    font-weight: 300; 
+    line-height: 58px; 
+    margin: 0 0 20px; 
+}
 
 p { 
-    color: #ffffff; 
+    color: rgb(78, 77, 77); 
     font-family: 'Lucida Sans', Arial, sans-serif; 
     font-size: 100%; 
     line-height: 26px; 
@@ -22,7 +32,7 @@ p {
 }
 
 form { 
-    color: #ffffff; 
+    color: rgb(78, 77, 77); 
     font-family: 'Lucida Sans', Arial, sans-serif; 
     font-size: 100%; 
     line-height: 26px; 
@@ -32,30 +42,48 @@ form {
 
 button {
     font-size: 1em;
-    color: white;
+    color: rgb(78, 77, 77);
     z-index: 4;
     border-radius: 12px;
-    background-color: transparent;
+    background-color: white;
     border: 100;
-    border-color: white;
+    border-color: rgb(78, 77, 77);
     font-family: Helvetica Neue 75 Bold;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
 }
 
 button:hover {
-  background-color: white;
+  background-color: transparent;
   border: 100;
-  border-color: white;
+  border-color: rgb(78, 77, 77);
   color: rgb(78, 77, 77);
 }
 
 #userInput {
     display: block;
+    height:900px;
+    width:750px;
+    margin:0 auto;
+    position:relative;
+    z-index:10;
+    background:rgba(255,255,255,0.5);
+    border:5px solid rgba(255,255,255,0.5);
+    border-radius:20px;
+    color: white;
 }
 
 #returnedRoutes {
-    display: none;
+    height:900px;
+    width:750px;
+    margin:0 auto;
+    position:relative;
+    z-index:10;
+    display:none;
+    background:rgba(255,255,255,0.5);
+    border:5px solid rgba(255,255,255,0.5);
+    border-radius:20px;
+    color: white;
 }
 
 /* FEATURES */
@@ -67,7 +95,7 @@ button:hover {
 /* Remove margins and padding from the list */
 ul {
   margin: 0;
-  padding: 0;
+  padding: 0px 300px 0px 40px;
 }
 
 /* Style the list items */
