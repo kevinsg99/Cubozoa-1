@@ -14,9 +14,9 @@ mq_KEY = 'iDccP1485vRS7TK0BzhNqXc6fro7ckuD'
 socket.setdefaulttimeout(9)
 @app.route("/")
 def home():
-    #data = open('templates/index.html').read()    
-    #return data
-    return render_template('templates/index.html')
+    data = open('index.html').read()    
+    return data
+    #return render_template('/index.html')
 
 home = [0.00, 0.00]
 coordinates = [0.00,0.00]
