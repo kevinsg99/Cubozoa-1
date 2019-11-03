@@ -3,30 +3,49 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8&v=3.31&use_slippy=true&callback=showMap"></script>
     <title>Cubozoa</title>
   </head>
   <body>
 
     <div id="userInput">
       <h1>Plan Your Route</h1>
-      <p>
-        How long will your run be today? (in miles)
-      </p>
-      <!--Input box for distance input-->
-      <p>
+      <form>
+        How long will your run be today? (in miles) : <input type = "text" name = "distance" />
+      </form><br>
+      <form>
+        What is the starting address of your desired route? : <input type = "text" name = "home" />
+      </form><br>
+
+      <h2>
         Select any route preferences below:
-      </p>
-      <!--list of preferences options and boxes able to "checkmark"-->
+      </h2>
+      <ul id="prefs">
+          <li>Less than 25 mph speed limit on route</li>
+          <li>Less than 5 street-crossings</li>
+          <li>Sidewalks on all roads on route</li>
+          <li>Restrooms on route</li>
+          <li>Water fountains on route</li>
+          <li>Gas stations on route</li>
+          <li>Recreation centers on route</li>
+          <li>Hilly route</li>
+          <li>Flat route</li>
+          <li>Scenic route (nearby parks, lakes, etc)</li>
+      </ul><br>
+
       <div>
-            <button id="goButton">View Routes →</button>
-      </div>
+          <button id="goButton">View Routes →</button>
+       </div>
     </div>
 
     <div id="returnedRoutes">
         <div>
-            <button id="backbutton">← Back</button>
+            <button id="backButton">← Back</button>
          </div>
       <h1>Your Possible Routes</h1>
+      <div id="map-canvas"></div>
+      <div id="elevation_chart">map.altitude_svg|safe</div>
       <!--scrollable list of screenshots of a map with route highlighted and details 
             such as miles listed-->
     </div>
