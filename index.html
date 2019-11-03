@@ -2,20 +2,79 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href='/static/styles/style.css'/>
     <script type="text/javascript" src="main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8&v=3.31&use_slippy=true&callback=showMap"></script>
     <title>Cubozoa</title>
   </head>
   <body>
+<script>
+  (function myFunction() {
 
+function display(id, value) {
+    document.getElementById(id).style.display = value;
+}
+
+function click(id, fn) {
+    document.getElementById(id).addEventListener("click", fn);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    click("backButton", function() {
+        display("userInput", "block");
+        display("returnedRoutes", "none");
+    });
+
+    click("goButton", function() {
+        display("userInput", "none");
+        display("returnedRoutes", "block");
+    });
+});
+
+function showMap() {
+    var path = [map.google_coordinates];
+    var center = new google.maps.LatLng(map.center[0], map.center[1]);
+    var zoom = map.zoom;
+
+    map = new google.maps.Map(document.getElementById("map-canvas"), {
+        zoom: zoom,
+        center: center,
+        mapTypeId: 'terrain'
+    });
+
+    var activity_route = new google.maps.Polyline({
+        path: path,
+        geodesic: true,
+        strokeColor: '#550FFF',
+        strokeOpacity: 1.0,
+        strokeWeight: 3,
+        map: map
+    });
+
+    var start = new google.maps.Marker({
+       position: path[0],
+       map: map,
+       label: 'S',
+       fillColor:'green'
+    });
+
+    var end = new google.maps.Marker({
+       position: path[path.length-1],
+       map: map,
+       label: 'E'
+     });
+  }
+
+}())
+  </script>
     <div id="userInput">
       <h1>Plan Your Route</h1>
       <form>
-        How long will your run be today? (in miles) : <input type = "text" name = "distance" />
+        How long will your run be today? (in miles) : <input type = "text" name = "runDistance" />
       </form><br>
       <form>
-        What is the starting address of your desired route? : <input type = "text" name = "home" />
+        What is the starting address of your desired route? : <input type = "text" name = "current" />
       </form><br>
 
       <h2>
@@ -44,10 +103,20 @@
             <button id="backButton">← Back</button>
          </div>
       <h1>Your Possible Routes</h1>
-      <div id="map-canvas"></div>
+      <p>### mile route</p>
+      <div id="map-canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.481938246776!2d-83.0107640849994!3d39.99768128894278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388eb8c5837241%3A0x29e24cc55fefd423!2sOhio%20Union!5e0!3m2!1sen!2sus!4v1572772936287!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
+      <p>### mile route</p>
+      <div id="map-canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.481938246776!2d-83.0107640849994!3d39.99768128894278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388eb8c5837241%3A0x29e24cc55fefd423!2sOhio%20Union!5e0!3m2!1sen!2sus!4v1572772936287!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
+      <p>### mile route</p>
+      <div id="map-canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.481938246776!2d-83.0107640849994!3d39.99768128894278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388eb8c5837241%3A0x29e24cc55fefd423!2sOhio%20Union!5e0!3m2!1sen!2sus!4v1572772936287!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
+      <p>### mile route</p>
+      <div id="map-canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.481938246776!2d-83.0107640849994!3d39.99768128894278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388eb8c5837241%3A0x29e24cc55fefd423!2sOhio%20Union!5e0!3m2!1sen!2sus!4v1572772936287!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
+      <p>### mile route</p>
+      <div id="map-canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.481938246776!2d-83.0107640849994!3d39.99768128894278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388eb8c5837241%3A0x29e24cc55fefd423!2sOhio%20Union!5e0!3m2!1sen!2sus!4v1572772936287!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
       <div id="elevation_chart">map.altitude_svg|safe</div>
       <!--scrollable list of screenshots of a map with route highlighted and details 
             such as miles listed-->
+
     </div>
 
   </body>
