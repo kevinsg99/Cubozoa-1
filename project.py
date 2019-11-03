@@ -1,7 +1,7 @@
-import geocoder
 import googlemaps
+import geocoder
 from datetime import datetime
-from flask import Flask
+from flask import Flask, render_template
 from queue import LifoQueue
 from googlemaps import convert
 #from googlemaps import GoogleMaps
@@ -9,7 +9,14 @@ from googlemaps import convert
 app = Flask(__name__)
 
 gmaps = googlemaps.Client(key="AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
-#gmaps = GoogleMaps("AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    data = open('index.html').read()    
+    return data
+
 home = [0.00, 0.00]
 coordinates = [0.00,0.00]
 
@@ -61,4 +68,6 @@ def router(adjacent):
             allRoutes.put(route)
             route.get()
 
-router(adjStreet)
+if __name__ == "__main__":
+    app.run(debug=True)
+    router(adjStreet)
