@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="main.js"></script>
     <title>Cubozoa</title>
   </head>
   <body>
@@ -16,15 +17,27 @@
       <p>
         Select any route preferences below:
       </p>
-      <!--list of preferences options and boxes able to "checkmark"-->
-      <div>
-            <button id="goButton">View Routes →</button>
-      </div>
-    </div>
+      <ul id="prefs">
+          <li>Less than 25 mph speed limit on route</li>
+          <li>Less than 5 street-crossings</li>
+          <li>Sidewalks on all roads on route</li>
+          <li>Restrooms on route</li>
+          <li>Water fountains on route</li>
+          <li>Gas stations on route</li>
+          <li>Recreation centers on route</li>
+          <li>Hilly route</li>
+          <li>Flat route</li>
+          <li>Scenic route (nearby parks, lakes, etc)</li>
+        </ul><br>
 
+      <div>
+          <button id="goButton">View Routes →</button>
+       </div>
+
+      </div>
     <div id="returnedRoutes">
         <div>
-            <button id="backbutton">← Back</button>
+            <button id="backButton">← Back</button>
          </div>
       <h1>Your Possible Routes</h1>
       <!--scrollable list of screenshots of a map with route highlighted and details 
