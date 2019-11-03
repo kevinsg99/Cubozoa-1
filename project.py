@@ -1,10 +1,14 @@
-import geocoder
 import googlemaps
+import geocoder
 from datetime import datetime
-from flask import Flask
-from queue import LifoQueue
+from flask import Flask, render_template
 
 app = Flask(__name__)
+
+@app.route("/")
+def home():
+    data = open('index.html').read()    
+    return data
 
 gmaps = googlemaps.Client(key='AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8')
 home = [0.00, 0.00]
@@ -58,4 +62,6 @@ def router(adjacent):
             allRoutes.put(route)
             route.get()
 
-router(adjStreet)
+if __name__ == "__main__":
+    app.run(debug=True)
+    router(adjStreet)
