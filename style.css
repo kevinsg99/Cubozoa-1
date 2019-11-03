@@ -70,7 +70,7 @@ button:hover {
     background:rgba(255,255,255,0.5);
     border:5px solid rgba(255,255,255,0.5);
     border-radius:20px;
-    color: white;
+    color: rgb(78, 77, 77);
 }
 
 #returnedRoutes {
@@ -83,7 +83,7 @@ button:hover {
     background:rgba(255,255,255,0.5);
     border:5px solid rgba(255,255,255,0.5);
     border-radius:20px;
-    color: white;
+    color: rgb(78, 77, 77);
 }
 
 /* FEATURES */
