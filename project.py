@@ -3,10 +3,13 @@ import googlemaps
 from datetime import datetime
 from flask import Flask
 from queue import LifoQueue
+from googlemaps import convert
+#from googlemaps import GoogleMaps
 
 app = Flask(__name__)
 
-gmaps = googlemaps.Client(key='AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8')
+gmaps = googlemaps.Client(key="AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
+#gmaps = GoogleMaps("AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
 home = [0.00, 0.00]
 coordinates = [0.00,0.00]
 
@@ -27,12 +30,12 @@ coordinates = [0.00,0.00]
 
 #gets current location, returning array of coordinates
 def getCurrentLocation():
-    #g = geocoder.ip('me')
-    #coordinates = g.latlng
-    address = "1739 N High St, Columbus, OH 43210"
-    lat, lng = gmaps.address_to_latlng(address)
-    print(result)
-    #coordinates = [lat, lng]
+    g = geocoder.ip('me')
+    coordinates = g.latlng
+    #address = "1739 N High St, Columbus, OH 43210"
+    #lat, lng = gmaps.address_to_latlng(address)
+    #result = [lat, lng]
+    #print(result)
     return coordinates
 
 coordinates = getCurrentLocation()
