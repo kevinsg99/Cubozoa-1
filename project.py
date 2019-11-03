@@ -4,11 +4,7 @@ from datetime import datetime
 from flask import Flask, render_template
 from queue import LifoQueue
 from googlemaps import convert
-<<<<<<< HEAD
-import requests
-=======
 from googlemaps import directions
->>>>>>> 692cc3fa26e76c7b947f4c33d1d52e9d17770c37
 
 app = Flask(__name__)
 
