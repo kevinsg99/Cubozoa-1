@@ -31,8 +31,8 @@ def getCurrentLocation():
     #coordinates = g.latlng
     address = "1739 N High St, Columbus, OH 43210"
     lat, lng = gmaps.address_to_latlng(address)
-    print(result)
-    #coordinates = [lat, lng]
+    #print(result)
+    coordinates = [lat, lng]
     return coordinates
 
 coordinates = getCurrentLocation()
