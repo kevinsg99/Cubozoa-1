@@ -4,14 +4,16 @@ from datetime import datetime
 from flask import Flask, render_template
 from queue import LifoQueue
 from googlemaps import convert
+<<<<<<< HEAD
 import requests
+=======
+from googlemaps import directions
+>>>>>>> 692cc3fa26e76c7b947f4c33d1d52e9d17770c37
 
 app = Flask(__name__)
 
 gmaps = googlemaps.Client(key="AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
 mq_KEY = "iDccP1485vRS7TK0BzhNqXc6fro7ckuD"
-
-app = Flask(__name__)
 
 @app.route("/")
 def home():
@@ -82,32 +84,68 @@ def getCurrentLocation():
 #home = [{"lat" : coordinates[0], "lng" : coordinates[1]}, "Columbus"]
 #home = (coordinates[0], coordinates[1])
 home = (40.006066, -83.009263)
+neighbor1 = (40.026252, -83.027001)
+neighbor2 = (40.025054, -83.041613)
+neighbor3 = (40.052468, -83.041610)
 route = LifoQueue()
 allRoutes = LifoQueue()
 totalDist = 0
-streetDist = 0
-runDistance = 0
-'''
-adjStreet = gmaps.nearest_roads(home)
+streetDist = 1
+runDistance = 4
+#adjStreet = gmaps.nearest_roads(home)[0]
+adjStreet = []
+adjStreet.append(gmaps.nearest_roads(home)[0])
+adjStreet.append(gmaps.nearest_roads(neighbor1)[0])
+adjStreet.append(gmaps.nearest_roads(neighbor2)[0])
+adjStreet.append(gmaps.nearest_roads(neighbor3)[0])
 #print(adjStreet)
+'''
 addressInfo = gmaps.reverse_geocode(home)
 streetCoords = adjStreet[0]['location']
 streetAddress = gmaps.reverse_geocode((streetCoords['latitude'], streetCoords['longitude']))
 street = streetAddress[1]['address_components'][1]['long_name']
-print(street)
+'''
+#print(street)
+direct = gmaps.directions(home, neighbor1)
+
+def getMiles(direct):
+    directLegs = direct[0]['legs']
+    directDistance = directLegs[0]['distance']
+    directText = directDistance['text']
+    print(directText)
+    miles = ""
+    done = False
+    for s in directText:
+        if (s == " "):
+            done = True
+        elif (done == False) and (s != " "):
+            miles += s
+    return miles
 
 def router(adjacent):
-    for n in adjacent:
-        #print(n)
+    print("hi")
+    totalDist = 0
+    while len(adjacent) > 0:
+        n = adjacent[0]
+        print(n)
         if (home not in n) and (totalDist+streetDist < runDistance):
             route.put(n)
-            router(n)
+            print("-------------------------route: ------------------------------")
+            print(route.qsize())
+            '''temp = route
+            i=0
+            while i < temp.qsize():
+                print(temp.get())
+                i = i+1'''
+            adjacent.pop(0)
+            totalDist += streetDist
+            router(adjacent)
         elif (home in n) and (totalDist+streetDist == runDistance):
             route.put(n)
             allRoutes.put(route)
             route.get()
-'''
+
 if __name__ == "__main__":
-    #app.run(debug=False)
-    #router(adjStreet)
+    app.run(debug=False)
+    router(adjStreet)
     sweep(home, 0.005)
