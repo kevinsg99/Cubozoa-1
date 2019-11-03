@@ -144,10 +144,3 @@ width: 7px;
   height: 550px;
   weight: 100%
 }
-
-#returnedRoutes body {
-  background-image: url('sky.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
