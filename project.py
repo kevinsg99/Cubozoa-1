@@ -18,8 +18,8 @@ def home():
     return data
     #return render_template('/index.html')
 
-home = [0.00, 0.00]
-coordinates = [0.00,0.00]
+#home = [0.00, 0.00]
+#coordinates = [0.00,0.00]
 
 #determines with some margin of error all the intersections and their coordinates over blanket area
 #blanket area: (run_distance^2/4)
@@ -36,7 +36,7 @@ def sweep(home, spacing):
         grid.append([home[0],home[1]+column*spacing])
         
     row=1
-    print('1Q'+str(grid))
+    #print('1Q'+str(grid))
     #4th quadrant
     while 30*row < 5280*runDistance/2.0:
         column=1
@@ -47,7 +47,7 @@ def sweep(home, spacing):
         grid.append([home[0],home[1]-column*spacing])
         
     row=1
-    print('4Q'+str(grid))
+    #print('4Q'+str(grid))
     #3rd quadrant
     while 30*row < 5280*runDistance/2.0:
         column=1
@@ -57,7 +57,7 @@ def sweep(home, spacing):
             column+=1
         grid.append([home[0],home[1]-column*spacing])      
     row=1
-    print('3Q'+str(grid))
+    #print('3Q'+str(grid))
     #2nd quadrant
     while 30*row < 5280*runDistance/2.0:
         column=1
@@ -66,23 +66,31 @@ def sweep(home, spacing):
             row+=1
             column+=1
         grid.append([home[0],home[1]+column*spacing])
-    print('2Q'+str(grid))
+    #print('2Q'+str(grid))
 
     intersections = []
 
     for i in range(len(grid)):
-    
-        requested_info = requests.get("http://www.mapquestapi.com/geocoding/v1/reverse?key="
-        + mq_KEY + "&location=" 
+        requested_info = requests.get('http://open.mapquestapi.com/geocoding/v1/reverse?key='
+        + mq_KEY + '&location=' 
         + str(grid[i][0])
-        + ","
+        + ','
         + str(grid[i][1])
-        + "&includeRoadMetadata=true&includeNearestIntersection=true")
-        
-        #requested_info = geocoder.mapquest([grid[i][0], grid[i][1]],method='reverse',key=mq_KEY)
-        intersection_coordinates = [requested_info.json()['results'][0]['locations'][0]['nearestIntersection']['latLng']['latitude'],requested_info.json()['results'][0]['locations'][0]['nearestIntersection']['latLng']['longitude']]
-        intersections.append(intersection_coordinates)
-    print(intersections)
+        + '&includeRoadMetadata=true&includeNearestIntersection=true')
+        requested_info = requested_info.json()
+        results=requested_info['results']
+        results_0=results[0]
+        locations=results_0['locations']
+        locations_0=locations[0]
+        print(locations_0)
+        nearestIntersection=locations_0["nearestIntersection"]
+        if(nearestIntersection!=None):
+            latLng=nearestIntersection['latLng']
+            latitude=latLng['latitude']
+            longitude=latLng['longitude']
+            intersection_coordinates = [latitude,longitude]
+            intersections.append(intersection_coordinates)
+        print(intersections)
     return intersections
 
 #gets current location, returning array of coordinates
@@ -130,8 +138,8 @@ def getMiles(coord1, coord2):
 
 def router(adjacent):
     totalDist = 0
-    streetDist = getMiles(current,adjacent[0]['location'])
     current = adjacent[0]['location']
+    streetDist = getMiles(current,adjacent[0]['location'])
     route = LifoQueue()
     while len(adjacent)-1 > 0:
         n = adjacent[0]
@@ -154,12 +162,13 @@ def router(adjacent):
             route.get()
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    #app.run(debug=False)
     home = (40.006066, -83.009263)
     route = LifoQueue()
     allRoutes = LifoQueue()
     totalDist = 0
     streetDist = 1
     runDistance = 4
-    adjStreet = sweep(home,0.00005)
+    adjStreet = sweep(home,0.0005)
     router(adjStreet)
+    print(adjStreet)
