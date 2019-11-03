@@ -47,12 +47,15 @@ coordinates = getCurrentLocation()
 #home = [{"lat" : coordinates[0], "lng" : coordinates[1]}, "Columbus"]
 home = (coordinates[0], coordinates[1])
 home = (40.006066, -83.009263)
+neighbor1 = (40.006066, -80.009263)
+neighbor2 = (33.006066, -70.009263)
+neighbor3 = (42.006066, -90.009263)
 route = LifoQueue()
 allRoutes = LifoQueue()
 totalDist = 0
 streetDist = 1
 runDistance = 4
-adjStreet = gmaps.nearest_roads(home)
+adjStreet = gmaps.nearest_roads([home, neighbor1, neighbor2, neighbor3])
 #print(adjStreet)
 '''
 addressInfo = gmaps.reverse_geocode(home)
