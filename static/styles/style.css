@@ -1,146 +1,146 @@
 body {
-    background-image: url('background1.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;}
+  background-image: url('background1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;}
 
 h1 { 
-    color: rgb(78, 77, 77); 
-    font-family: 'Lato', sans-serif; 
-    font-size: 250%; 
-    font-weight: 300; 
-    line-height: 58px; 
-    margin: 0 0 58px; 
+  color: rgb(78, 77, 77); 
+  font-family: 'Lato', sans-serif; 
+  font-size: 250%; 
+  font-weight: 300; 
+  line-height: 58px; 
+  margin: 0 0 58px; 
 }
 
 h2 { 
-    color: rgb(78, 77, 77); 
-    font-family: 'Lato', sans-serif; 
-    font-size: 190%; 
-    font-weight: 300; 
-    line-height: 58px; 
-    margin: 0 0 20px; 
+  color: rgb(78, 77, 77); 
+  font-family: 'Lato', sans-serif; 
+  font-size: 190%; 
+  font-weight: 300; 
+  line-height: 58px; 
+  margin: 0 0 20px; 
 }
 
 p { 
-    color: rgb(78, 77, 77); 
-    font-family: 'Lucida Sans', Arial, sans-serif; 
-    font-size: 100%; 
-    line-height: 26px; 
-    text-indent: 30px; 
-    margin: 0; 
+  color: rgb(78, 77, 77); 
+  font-family: 'Lucida Sans', Arial, sans-serif; 
+  font-size: 100%; 
+  line-height: 26px; 
+  text-indent: 30px; 
+  margin: 0; 
 }
 
 form { 
-    color: rgb(78, 77, 77); 
-    font-family: 'Lucida Sans', Arial, sans-serif; 
-    font-size: 100%; 
-    line-height: 26px; 
-    text-indent: 30px; 
-    margin: 0; 
+  color: rgb(78, 77, 77); 
+  font-family: 'Lucida Sans', Arial, sans-serif; 
+  font-size: 100%; 
+  line-height: 26px; 
+  text-indent: 30px; 
+  margin: 0; 
 }
 
 button {
-    font-size: 1em;
-    color: rgb(78, 77, 77);
-    z-index: 4;
-    border-radius: 12px;
-    background-color: white;
-    border: 100;
-    border-color: rgb(78, 77, 77);
-    font-family: Helvetica Neue 75 Bold;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  font-size: 1em;
+  color: rgb(78, 77, 77);
+  z-index: 4;
+  border-radius: 12px;
+  background-color: white;
+  border: 100;
+  border-color: rgb(78, 77, 77);
+  font-family: Helvetica Neue 75 Bold;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
 }
 
 button:hover {
-  background-color: transparent;
-  border: 100;
-  border-color: rgb(78, 77, 77);
-  color: rgb(78, 77, 77);
+background-color: transparent;
+border: 100;
+border-color: rgb(78, 77, 77);
+color: rgb(78, 77, 77);
 }
 
 #userInput {
-    display: block;
-    height:900px;
-    width:750px;
-    margin:0 auto;
-    position:relative;
-    z-index:10;
-    background:rgba(255,255,255,0.5);
-    border:5px solid rgba(255,255,255,0.5);
-    border-radius:20px;
-    color: rgb(78, 77, 77);
+  display: block;
+  height:900px;
+  width:750px;
+  margin:0 auto;
+  position:relative;
+  z-index:10;
+  background:rgba(255,255,255,0.5);
+  border:5px solid rgba(255,255,255,0.5);
+  border-radius:20px;
+  color: rgb(78, 77, 77);
 }
 
 #returnedRoutes {
-    height:900px;
-    width:750px;
-    margin:0 auto;
-    position:relative;
-    z-index:10;
-    display:none;
-    background:rgba(255,255,255,0.5);
-    border:5px solid rgba(255,255,255,0.5);
-    border-radius:20px;
-    color: rgb(78, 77, 77);
+  height:900px;
+  width:750px;
+  margin:0 auto;
+  position:relative;
+  z-index:10;
+  display:none;
+  background:rgba(255,255,255,0.5);
+  border:5px solid rgba(255,255,255,0.5);
+  border-radius:20px;
+  color: rgb(78, 77, 77);
 }
 
 /* FEATURES */
 /* Include the padding and border in an element's total width and height */
 * {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 
 /* Remove margins and padding from the list */
 ul {
-  margin: 0;
-  padding: 0px 300px 0px 40px;
+margin: 0;
+padding: 0px 300px 0px 40px;
 }
 
 /* Style the list items */
 ul li {
-  cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  background: #eee;
-  font-size: 18px;
-  transition: 0.2s;
-  color: rgb(78, 77, 77);
+cursor: pointer;
+position: relative;
+padding: 12px 8px 12px 40px;
+background: #eee;
+font-size: 18px;
+transition: 0.2s;
+color: rgb(78, 77, 77);
 
 }
 
 /* Set all odd list items to a different color (zebra-stripes) */
 ul li:nth-child(odd) {
-  background: #f9f9f9;
+background: #f9f9f9;
 }
 
 /* Darker background-color on hover */
 ul li:hover {
-  background: #ddd;
+background: #ddd;
 }
 
 /* When clicked on, add a background color and strike out text */
 ul li.checked {
-  background: #888;
-  color: #fff;
+background: #888;
+color: #fff;
 }
 
 /* Add a "checked" mark when clicked on */
 ul li.checked::before {
-  content: '';
-  position: absolute;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
+content: '';
+position: absolute;
+border-color: #fff;
+border-style: solid;
+border-width: 0 2px 2px 0;
+top: 10px;
+left: 16px;
+transform: rotate(45deg);
+height: 15px;
+width: 7px;
 }
 
 #map-canvas {
-    height: 550px;
-    weight: 100%
-  }
+  height: 550px;
+  weight: 100%
+}
