@@ -9,8 +9,6 @@ app = Flask(__name__)
 
 gmaps = googlemaps.Client(key="AIzaSyAsLI9pzus4z91Pyq1_aANnpOa8YKzE2t8")
 
-app = Flask(__name__)
-
 @app.route("/")
 def home():
     data = open('index.html').read()    
@@ -52,27 +50,38 @@ home = (40.006066, -83.009263)
 route = LifoQueue()
 allRoutes = LifoQueue()
 totalDist = 0
-streetDist = 0
-runDistance = 0
+streetDist = 1
+runDistance = 4
 adjStreet = gmaps.nearest_roads(home)
 #print(adjStreet)
+'''
 addressInfo = gmaps.reverse_geocode(home)
 streetCoords = adjStreet[0]['location']
 streetAddress = gmaps.reverse_geocode((streetCoords['latitude'], streetCoords['longitude']))
 street = streetAddress[1]['address_components'][1]['long_name']
-print(street)
+'''
+#print(street)
 
 def router(adjacent):
-    for n in adjacent:
-        #print(n)
+    print("hi")
+    totalDist = 0
+    while len(adjacent) - 1:
+        n = adjacent[0]
+        print(n)
         if (home not in n) and (totalDist+streetDist < runDistance):
             route.put(n)
-            router(n)
+            #print("route: ")
+            #print(route.get())
+            adjacent.pop()
+            totalDist += streetDist
+            router(adjacent)
         elif (home in n) and (totalDist+streetDist == runDistance):
             route.put(n)
             allRoutes.put(route)
             route.get()
 
+router(adjStreet)
+
 if __name__ == "__main__":
     app.run(debug=False)
-    router(adjStreet)
+    #router(adjStreet)
