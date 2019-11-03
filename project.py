@@ -1,9 +1,9 @@
 import googlemaps
 import geocoder
+import requests
 from datetime import datetime
 from flask import Flask, render_template
 from queue import LifoQueue
-from googlemaps import convert
 from googlemaps import directions
 
 app = Flask(__name__)
@@ -47,7 +47,7 @@ def sweep(home, spacing):
         column+=1
     while 30*row > -5280*runDistance/2.0:
         column=1
-        while 30*column > 5280*runDistance/2.0:
+        while 30*column > -5280*runDistance/2.0:
             grid.append([home[0]-spacing*column,home[1]])
             row+=1
         grid.append([home[0],home[1]-column*spacing])
