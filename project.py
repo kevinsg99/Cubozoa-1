@@ -136,7 +136,7 @@ def getMiles(coord1, coord2):
             miles += s
     return float(miles)
 
-def router(adjacent):
+def router(current, adjacent, runDistance):
     totalDist = 0
     current = adjacent[0]['location']
     streetDist = getMiles(current,adjacent[0]['location'])
