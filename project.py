@@ -81,9 +81,9 @@ def sweep(home, spacing):
         results=requested_info['results']
         results_0=results[0]
         locations=results_0['locations']
-        locations_0=locations[0]
-        print(locations_0)
-        nearestIntersection=locations_0["nearestIntersection"]
+        location_0=locations[0]
+        print(location_0)
+        nearestIntersection=location_0["nearestIntersection"]
         if(nearestIntersection!=None):
             latLng=nearestIntersection['latLng']
             latitude=latLng['latitude']
@@ -169,11 +169,5 @@ if __name__ == "__main__":
     totalDist = 0
     streetDist = 1
     runDistance = 4
-<<<<<<< HEAD
-    adjStreet = sweep(home,0.0005)
-    router(adjStreet)
-    print(adjStreet)
-=======
     adjStreet = sweep(home,0.00005)
     router(adjStreet)
->>>>>>> b56190f4d23a86ee3b3d30c903e86e0ae23222bc
